@@ -22,6 +22,7 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useContext, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import AuthContext from '../AuthContext';
+import Input from '@mui/material/Input';
 
 function Login() {
 
@@ -39,6 +40,9 @@ function Login() {
             height: '6vh',
             marginTop: '2%'
         },
+        abc: {
+            height: '5vh'
+        }
     })
     const classes = useStyles();
 
@@ -107,15 +111,16 @@ function Login() {
                 <Card variant='outlined'>
 
                     <div className='insta-logo'>
-                        <img src={logo} alt='' />
+                        <h1 style={{fontFamily:'cursive'}}>Log In</h1>
                     </div>
 
                     <CardContent>
 
                         {error!=='' && <Alert severity="error">{error}</Alert>}
                         
-                        <TextField  value={email} onChange={(e)=>setEmail(e.target.value)} id="outlined-basic" label="Email" variant="outlined" fullWidth={true} margin='dense' size='small' />
-                        <TextField value={password} onChange={(e)=>setPassword(e.target.value)} id="outlined-basic" label="Password" variant="outlined" fullWidth={true} margin='dense' size='small' />
+                        <Input type='text' className={classes.abc} value={email} onChange={(e)=>setEmail(e.target.value)} id="outlined-basic" placeholder="Email" variant="outlined" fullWidth={true} margin='dense' size='small' />
+                        <Input type='password' className={classes.abc} value={password} onChange={(e)=>setPassword(e.target.value)} id="outlined-basic" placeholder="Password" variant="outlined" fullWidth={true} margin='dense' size='small' />
+                        {/* <TextField id="standard-basic" label="Standard" /> */}
                     
                     </CardContent>
 

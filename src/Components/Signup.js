@@ -13,6 +13,7 @@ import Alert from '@mui/material/Alert';
 import AuthContext from '../AuthContext';
 import { useHistory } from "react-router-dom";
 import { database, storage } from '../firebase';
+import Input from '@mui/material/Input';
 
 
 export default function Signup() {
@@ -26,6 +27,9 @@ export default function Signup() {
         card2: {
             height: '7vh',
             marginTop: '2%'
+        },
+        abc: {
+            height: '5vh'
         }
     })
     const classes = useStyles();
@@ -83,7 +87,7 @@ export default function Signup() {
             <div className='signupCard'>
                 <Card variant='outlined'>
                     <div className='insta-logo'>
-                        <img src={logo} alt='' />
+                        <h1 style={{fontFamily:'cursive'}}>Sign up</h1>
                     </div>
                     <CardContent>
 
@@ -93,10 +97,10 @@ export default function Signup() {
 
                         {error!=='' && <Alert severity="error">{error}</Alert>}
                         
-                        <TextField value={name} onChange={(e)=>setName(e.target.value)} id="outlined-basic" label="Full Name" variant="outlined" fullWidth={true} margin='dense' size='small' />
-                        <TextField value={email} onChange={(e)=>setEmail(e.target.value)} id="outlined-basic" label="  Email" variant="outlined" fullWidth={true} margin='dense' size='small' />
+                        <Input className={classes.abc} type="text" placeholder="Full Name" value={name} onChange={(e)=>setName(e.target.value)} id="outlined-basic" label="Full Name" variant="outlined" fullWidth={true} margin='dense' size='small' />
+                        <Input className={classes.abc} type="text" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} id="outlined-basic" label="  Email" variant="outlined" fullWidth={true} margin='dense' size='small' />
                         {/* <TextField id="outlined-basic" label="Username" variant="outlined" fullWidth={true} margin='dense' size='small' /> */}
-                        <TextField value={password} onChange={(e)=>setPassword(e.target.value)} id="outlined-basic" label="Password" variant="outlined" fullWidth={true} margin='dense' size='small' />
+                        <Input className={classes.abc} type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} id="outlined-basic" label="Password" variant="outlined" fullWidth={true} margin='dense' size='small' />
 
                         {/* <Button color='secondary' fullWidth={true} margin='dense' variant="outlined" startIcon={<CloudUploadIcon />} component='label'>
                             Upload Profile Image

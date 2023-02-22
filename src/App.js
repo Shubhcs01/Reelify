@@ -7,9 +7,11 @@ import { auth } from "./firebase";
 import { useState, useEffect } from "react";
 import AuthContext from "./AuthContext";
 import PrivateRoute from "./Components/PrivateRoute";
+import { useHistory } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState('');
+  let history = useHistory();
   // const [loading, setLoading] = useState(true);
 
   function signup(email, password) {
@@ -22,6 +24,7 @@ function App() {
 
   function logout() {
     auth.signOut();
+    history.push("/login");
   }
 
   useEffect(() => {
