@@ -49,7 +49,7 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/feed" component={Feed} />
-            <PrivateRoute path="/" exact component={Login} />
+            <PrivateRoute path="/post-it" exact component={Login} />
           </AuthContext.Provider>
         </Switch>
       </BrowserRouter>
