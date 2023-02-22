@@ -1,0 +1,94 @@
+
+body{
+    /* background-color: lightblue; */
+}
+
+.video-container{
+    height: 80vh;
+    /* width:50%; */
+    border-radius: 20px;
+    background-color: white;
+    overflow: scroll;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+}
+.video-container::-webkit-scrollbar{
+   display: none;
+}
+
+.videos-styling{
+    width: 100%;
+    height: 80vh;
+    scroll-snap-align: start;
+}
+
+.feed{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.videos{
+    position: relative;
+}
+
+.fa{
+    position:absolute;
+    left:10%;
+    bottom: 7%;
+}
+
+.fa h4{
+    color: white;
+    margin: 0;
+    margin-top: 8%;
+    margin-left: 10%;
+}
+
+.icon-styling{
+    position: absolute;
+    bottom: 7%;
+    right: 18%;
+}
+
+.like{
+    cursor: pointer;
+    color: red;
+}
+
+.unlike{
+    cursor: pointer;
+    color: white;
+}
+
+.comment-icon{
+    cursor: pointer;
+    color: white;
+    right: 5%;
+}
+
+.comment-modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    top: 10%;
+    /* left:10%; */
+    bottom: 7%;
+    left: 3%;
+    width: 95%;
+    height: 75%;
+    border-radius: 20px;
+}
+
+input{
+    position: absolute;
+    bottom: 10%;
+    left: 3%;
+    margin: 2px;
+    width: 90%;
+    height: 10%;
+}
