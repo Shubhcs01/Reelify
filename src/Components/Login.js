@@ -82,7 +82,7 @@ function Login() {
     return (
         <div className='loginWrapper'>
 
-            <div className='imgCar' style={{ backgroundImage: 'url(' + bg + ')', backgroundSize: 'cover' }}>
+            {/* <div className='imgCar' style={{ backgroundImage: 'url(' + bg + ')', backgroundSize: 'cover' }}>
                 <div className='car'>
                     <CarouselProvider
                         visibleSlides={1}
@@ -105,7 +105,7 @@ function Login() {
                         </Slider>
                     </CarouselProvider>
                 </div>
-            </div>
+            </div> */}
 
             <div className='loginCard'>
                 <Card variant='outlined'>

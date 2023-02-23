@@ -22,9 +22,10 @@ function App() {
     return auth.signInWithEmailAndPassword(email, password);
   }
 
-  function logout() {
-    auth.signOut();
-    history.push("/login");
+  async function logout() {
+    // history.push("/login");
+    await auth.signOut();
+    
   }
 
   useEffect(() => {
@@ -49,7 +50,7 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/feed" component={Feed} />
-            <PrivateRoute path="/post-it" exact component={Login} />
+            <PrivateRoute path="/" exact component={Login} />
           </AuthContext.Provider>
         </Switch>
       </BrowserRouter>

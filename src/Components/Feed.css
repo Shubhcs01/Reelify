@@ -29,6 +29,20 @@ body{
     flex-direction: column;
 }
 
+.comp{
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.comp>Button{
+    left: 30%;
+}
+.comp > h1{
+    margin-left: 20%
+}
+
 .videos{
     position: relative;
 }
@@ -70,25 +84,46 @@ body{
 
 .comment-modal{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex;
     flex-direction: column;
     background-color: white;
     position: absolute;
     top: 10%;
-    /* left:10%; */
     bottom: 7%;
     left: 3%;
     width: 95%;
     height: 75%;
-    border-radius: 20px;
+    
+}
+
+.comment-modal > .comments{
+    overflow: auto;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    word-break: break-all;
+    height: 85%;
 }
 
 input{
     position: absolute;
-    bottom: 10%;
+    bottom: 2%;
     left: 3%;
     margin: 2px;
-    width: 90%;
+    width: 70%;
     height: 10%;
+    border: 1px solid blueviolet;
+}
+
+button{
+    position: absolute;
+    bottom: 2.4%;
+    right: 2%;
+    margin: 2px;
+    width: 20%;
+    height: 10%;
+    color: white;
+    background-color: rgb(123,31,162);
+    font-size: 1.3rem;
 }

@@ -38,7 +38,6 @@ function Video(props) {
         onClick={onVideoClick}
         onEnded={handelScroll}
         autoPlay={false}
-        controls
       />
     </>
   );

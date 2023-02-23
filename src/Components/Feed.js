@@ -24,14 +24,13 @@ function Feed() {
   return (
     <div className="feed">
       <div className="comp" style={{ width: "50%" }}>
-        <h1>Welcome to ApnaReels App</h1>
+        <h1 style={{fontFamily:"cursive"}}>Welcome to Post it</h1>
         <Button variant="outlined" color="primary" onClick={logout}>
           Logout
         </Button>
       </div>
       <UploadFile user={userData} />
       <Posts userData={userData}/>
-      {/* <Video/> */}
     </div>
   );
 }

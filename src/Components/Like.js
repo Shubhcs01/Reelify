@@ -10,7 +10,7 @@ function Like({userData, postData}) {
     useEffect(()=>{
         let isLiked = postData.likes.includes(userData.userId)? true:false;
         setLike(isLiked);
-    },[postData])
+    },[userData])
 
     const handelClick = () => {
         console.log("heart clicked!");

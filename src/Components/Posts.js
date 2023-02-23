@@ -11,6 +11,7 @@ import "../Components/Feed.css";
 function Posts({userData}) {
 
     const[posts,setPosts] = useState(null);
+    const[open,setOpen] = useState(null);
     const[modal,setModal] = useState(false);
 
     useEffect(() => {
@@ -25,8 +26,13 @@ function Posts({userData}) {
         return unsub;
     },[])
 
-    const handleModal = () => {
+    const handleModal = (id) => {
         setModal(!modal);
+        if(modal){
+            setOpen(id);
+        } else {
+            setOpen(null);
+        }
     }
 
   return (
@@ -40,11 +46,13 @@ function Posts({userData}) {
                             <Video src={post.postUrl}/>
                             <div className='fa' style={{display:'flex'}}>
                                 <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
-                                <h4>{userData.fullName}</h4>
+                                <h4>{post.userName}</h4>
                             </div>
                             <Like userData={userData} postData={post}/>
-                            <CommentIcon onClick={handleModal} className='icon-styling comment-icon'/>
-                            {/* <CommentModal modal={modal}/> */}
+                            <CommentIcon onClick={()=>handleModal(post.postId)} className='icon-styling comment-icon'/>
+                            {
+                                !modal? <CommentModal open={open} userData={userData} post={post}/>:<div></div>
+                            }
                         </div>
                     ))
                 }
