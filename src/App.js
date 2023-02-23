@@ -47,10 +47,10 @@ function App() {
       <BrowserRouter >
         <Switch >
           <AuthContext.Provider value={store}>
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/feed" component={Feed} />
-            <PrivateRoute path="/" exact component={Login} />
+            <Route path="/post-it/login" component={Login} />
+            <Route path="/post-it/signup" component={Signup} />
+            <Route path="/post-it/feed" component={Feed} />
+            <PrivateRoute path="/post-it/" exact component={Login} />
           </AuthContext.Provider>
         </Switch>
       </BrowserRouter>
