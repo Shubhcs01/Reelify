@@ -51,7 +51,7 @@ function Posts({userData}) {
                             <Like userData={userData} postData={post}/>
                             <CommentIcon onClick={()=>handleModal(post.postId)} className='icon-styling comment-icon'/>
                             {
-                                !modal? <CommentModal open={open} userData={userData} post={post}/>:<div></div>
+                                modal? <CommentModal open={open} userData={userData} post={post}/>:<div></div>
                             }
                         </div>
                     ))

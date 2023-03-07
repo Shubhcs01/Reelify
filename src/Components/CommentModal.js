@@ -4,11 +4,11 @@ import { database } from '../firebase';
 
 function CommentModal(props) {
 
-  // console.log(props.post.comments);
+  console.log(props.post.comments);
 
   const[msg,setMsg] = useState('');
 
-  if (props.open !== props.post.postId) return;
+  // if (props.open !== props.post.postId) return;
 
   const handelComment = () => {
     let obj = {
@@ -39,7 +39,8 @@ function CommentModal(props) {
         <input value={msg} onChange={(e)=>setMsg(e.target.value)}  type="text" placeholder="    Write comment..."/>
         <button onClick={handelComment}>Post</button>
      </div>
-  );
+  )
+
 }
 
 export default CommentModal;
