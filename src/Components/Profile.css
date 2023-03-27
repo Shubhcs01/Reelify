@@ -1,0 +1,19 @@
+
+.profile{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 7%;
+}
+
+.profile-pic{
+   height: 100px;
+   width: 100px;
+   top: 20px;
+}
+
+#AccountCircleIcon{
+    width: 100px;
+    height: 100px;
+    font-size: 50px;
+}

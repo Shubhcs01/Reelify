@@ -12,7 +12,7 @@ function Feed() {
   
   const { user, logout } = useContext(AuthContext);
   const [userData, setUserData] = useState('');
-  console.log(user);
+  console.log(userData);
 
   useEffect(() => {
     const unsub = database.users.doc(user.uid).onSnapshot((snapshot) => {
@@ -23,6 +23,7 @@ function Feed() {
 
   return (
     <div className="feed">
+    < Navbar userData={userData}/>
       <div className="comp" style={{ width: "50%" }}>
         <h1 style={{fontFamily:"cursive"}}>Welcome to Post it</h1>
         <Button variant="outlined" color="primary" onClick={logout}>

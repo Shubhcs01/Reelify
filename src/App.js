@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import AuthContext from "./AuthContext";
 import PrivateRoute from "./Components/PrivateRoute";
 import { useHistory } from "react-router-dom";
+import Profile from "./Components/Profile";
 
 function App() {
   const [user, setUser] = useState('');
@@ -50,6 +51,7 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/feed" component={Feed} />
+            <Route path="/profile" component={Profile} />
             <PrivateRoute path="/" exact component={Login} />
           </AuthContext.Provider>
         </Switch>
