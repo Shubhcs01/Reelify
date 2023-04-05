@@ -51,7 +51,7 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/feed" component={Feed} />
-            <Route path="/profile/:id" component={Profile} />
+            <PrivateRoute path="/profile/:id" component={Profile} />
             <PrivateRoute path="/" exact component={Login} />
           </AuthContext.Provider>
         </Switch>

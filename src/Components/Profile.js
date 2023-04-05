@@ -42,7 +42,9 @@ function Profile() {
                         <img className='profile-pic' src={profilePic}></img>
                         <p style={{fontFamily: "cursive"}}> Name: <span style={{ fontWeight: "bold" }}>{userData.fullName}</span></p>
                         <p style={{fontFamily: "cursive"}}> Email: <span style={{ fontWeight: "bold" }}>{userData.email}</span></p>
+                        <hr></hr>
                         <p style={{ fontFamily: "cursive" }}>Posts {userData.postIds ? userData.postIds.length : 0} &nbsp;&nbsp;&nbsp;  Follower 0 &nbsp;&nbsp;&nbsp;  Following 0</p>
+                        <hr/>
                     </div>
                 </div>
                 </>

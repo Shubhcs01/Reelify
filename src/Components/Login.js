@@ -117,8 +117,8 @@ function Login() {
                     </CardActions>
                     <CardContent>
                         <Typography variant="subtitle2" className={classes.text1}>
-                            Email: test@xyz.com <br></br>
-                            password: test1234
+                            Email: tester@mail.com <br></br>
+                            password: test12345
                         </Typography>
                     </CardContent>
                 </Card>

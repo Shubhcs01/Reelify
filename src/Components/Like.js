@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { database } from '../firebase';
+import "../Components/Feed.css";
 
 function Like({userData, postData}) {
 
@@ -10,9 +11,9 @@ function Like({userData, postData}) {
     useEffect(()=>{
         let isLiked = postData.likes.includes(userData.userId)? true:false;
         setLike(isLiked);
-    },[userData])
+    },[postData])
 
-    const handelClick = () => {
+    const handelClick = async() => {
         console.log("heart clicked!");
         if(like){
             //unlike
@@ -21,7 +22,7 @@ function Like({userData, postData}) {
                 return item !== userData.userId
             });
             //update db
-            database.posts.doc(postData.docId).update({
+            await database.posts.doc(postData.docId).update({
                 likes:narr
             });
 
@@ -30,7 +31,7 @@ function Like({userData, postData}) {
             //add userId to likes[]
             let narr = [...postData.likes,userData.userId ];
             //update db
-            database.posts.doc(postData.docId).update({
+            await database.posts.doc(postData.docId).update({
                 likes:narr
             });
         }
@@ -40,10 +41,13 @@ function Like({userData, postData}) {
   return (
     <div>
         {
-            like != null?
+            like !== null?
             <>
             {
-                like? <FavoriteIcon className='icon-styling like' onClick={handelClick}/>:<FavoriteIcon onClick={handelClick} className='icon-styling unlike'/>
+                like? 
+                <FavoriteIcon className='icon-styling like' onClick={handelClick}/>
+                :
+                <FavoriteIcon onClick={handelClick} className='icon-styling unlike'/>
             }
             </>
             :

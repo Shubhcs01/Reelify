@@ -7,6 +7,7 @@ import Like from './Like';
 import CommentIcon from '@mui/icons-material/Comment';
 import CommentModal from './CommentModal';
 import "../Components/Feed.css";
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 
 function Posts({userData}) {
 
@@ -25,6 +26,33 @@ function Posts({userData}) {
         })
         return unsub;
     },[])
+
+    //Intersection observor api
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            console.log(entry);
+            let elem = entry.target.childNodes[0];
+            console.log(elem);
+            //play()->async function, return promise
+            elem.play().then(()=>{
+                if(!elem.paused && !entry.isIntersecting){
+                    elem.pause();
+                }
+            })
+        });
+      }, { threshold: 0.6 });
+
+      
+    useEffect(() => {
+        const elements = document.querySelectorAll(".videos");
+        elements.forEach((elem)=>{
+            observer.observe(elem);
+        })
+        //cleanup (remove previous eventListener)
+        return()=>{
+            observer.disconnect();
+        }
+    },[posts])
 
     const handleModal = (id) => {
         setModal(!modal);

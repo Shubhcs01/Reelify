@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { database, storage } from '../firebase';
 import { Button } from '@mui/material'
 import {v4 as uuidv4} from 'uuid';
 
 function UploadFile(props) {
+
     console.log(props);
+
+    const [progress, setProgress] = useState(0);
+
     const handleChange = async(file) => {
 
         if(file){
@@ -18,6 +22,13 @@ function UploadFile(props) {
             function fn1(snapshot) {
                 let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 console.log(`upload is ${progress} done`);
+                setProgress(progress);
+                if(progress === 100){
+                    setInterval(()=>{
+                        setProgress(0);
+                    },2000)
+                    // alert("Successfully Uploaded");
+                }
             }
     
             //Error
@@ -65,6 +76,8 @@ function UploadFile(props) {
             >
                 Upload Video
             </Button>
+            {progress > 0 && <p>Upload progress: {progress.toFixed(2)}%</p>}
+            {progress == 100? <p>Successfully Uploaded</p>:<></>}
         </label>
 
     </div>

@@ -3,6 +3,7 @@ import "../Components/Feed.css";
 import ReactDOM from "react-dom";
 
 function Video(props) {
+  
   const [isVideoPlaying, setisVideoPlaying] = useState(false);
   const vidRef = useRef();
 
@@ -10,6 +11,7 @@ function Video(props) {
     event.preventDefault();
     event.target.muted = !event.target.muted;
   };
+
   const handelScroll = (event) => {
     console.log("ended");
     let nextVid = ReactDOM.findDOMNode(event.target).parentNode.nextSibling;
@@ -17,15 +19,6 @@ function Video(props) {
     if (nextVid) {
       nextVid.scrollIntoView();
       event.target.muted = true;
-      // console.log(vidRef);
-      // if(isVideoPlaying) {
-      //     console.log(vidRef.current);
-      //     vidRef.current.pause();
-      //     setisVideoPlaying(false);
-      // } else {
-      //     vidRef.current.play();
-      //     setisVideoPlaying(true);
-      // }
     }
   };
 
@@ -34,10 +27,10 @@ function Video(props) {
       <video
         src={props.src}
         className="videos-styling"
-        muted={false}
+        id={props.id}
         onClick={onVideoClick}
         onEnded={handelScroll}
-        autoPlay={false}
+        muted="muted"
       />
     </>
   );

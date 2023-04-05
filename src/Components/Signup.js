@@ -62,6 +62,7 @@ export default function Signup() {
 
         setError('');
         const userObj = await store.signup(email,password);
+        console.log(userObj);
         const uid = userObj.user.uid;
         console.log("Signup success" + uid);
 
