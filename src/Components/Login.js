@@ -54,6 +54,9 @@ function Login() {
     let history = useHistory();
     // console.log(store);
 
+    const emailRegex = 
+    new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
+   
     const handleClick = async() => {
         if(email==='' || password===''){
             setError('Fields should not be empty !');
@@ -62,6 +65,7 @@ function Login() {
             },2000);
             return;
         } 
+      
         if(password.length < 6){
             setError('Length of password must be atleast 6 !');
             setTimeout(()=>{
@@ -70,42 +74,26 @@ function Login() {
             return;
         }
 
-        setError('');
-        const userObj = await store.login(email,password);
-        const uid = userObj.user.uid;
-        console.log("Logged In success" + uid);
-        if(uid !== undefined){
-            history.push("/feed");
+        if(!emailRegex.test(email)){
+            setError('Email was Incorrect');
+            return;
+        } else {
+            setError('');
+            const userObj = await store.login(email,password);
+            const uid = userObj.user.uid;
+            console.log("Logged In success" + uid);
+            if(uid !== undefined){
+                history.push("/feed");
+            } else {
+                alert("wrong Credential");
+            }
         }
+
+        
     }
 
     return (
         <div className='loginWrapper'>
-
-            {/* <div className='imgCar' style={{ backgroundImage: 'url(' + bg + ')', backgroundSize: 'cover' }}>
-                <div className='car'>
-                    <CarouselProvider
-                        visibleSlides={1}
-                        naturalSlideWidth={238}
-                        naturalSlideHeight={423}
-                        totalSlides={5}
-                        interval={3000}
-                        isPlaying={true}
-                        infinite={true}
-                        dragEnabled={false}
-                        touchEnabled={false}
-                        hasMasterSpinner
-                    >
-                        <Slider>
-                            <Slide index={0}><Image src={img1} /></Slide>
-                            <Slide index={1}><Image src={img2} /></Slide>
-                            <Slide index={2}><Image src={img3} /></Slide>
-                            <Slide index={3}><Image src={img4} /></Slide>
-                            <Slide index={4}><Image src={img5} /></Slide>
-                        </Slider>
-                    </CarouselProvider>
-                </div>
-            </div> */}
 
             <div className='loginCard'>
                 <Card variant='outlined'>
@@ -129,7 +117,8 @@ function Login() {
                     </CardActions>
                     <CardContent>
                         <Typography variant="subtitle2" className={classes.text1}>
-                            By Logging in, you agree to our Terms , Data Policy and Cookies Policy .
+                            Email: test@xyz.com <br></br>
+                            password: test1234
                         </Typography>
                     </CardContent>
                 </Card>
