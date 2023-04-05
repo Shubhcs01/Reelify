@@ -54,7 +54,7 @@ function UploadFile(props) {
 
 
   return (
-    <div>
+    <div style={{marginTop:"4.4rem"}}>
         <input onChange={(e)=>handleChange(e.target.files[0])} type="file" accept='video/*' id='upload-input' style={{display:'none'}} />
         <label htmlFor='upload-input'>
             <Button

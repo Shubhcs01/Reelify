@@ -9,7 +9,7 @@ function PrivateRoute({component:Component,...rest}) {
 
     return (
         <Route {...rest} render={props=>{
-            return user? <Component {...props}/> : history.push('login')
+            return user? <Component {...props}/> : history.push('/login')
         }}/>
     )
 }

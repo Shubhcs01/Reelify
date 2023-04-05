@@ -18,11 +18,13 @@ import Avatar from '@mui/material/Avatar';
 import HomeIcon from '@mui/icons-material/Home';
 import ExploreIcon from '@mui/icons-material/Explore';
 import logo4 from '../Assets/logo4.png';
+import { makeStyles } from '@mui/styles';
 
 
 export default function NavBar({ userData }) {
 
-  console.log(userData)
+  console.log("navbar");
+  console.log(userData);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -54,11 +56,14 @@ export default function NavBar({ userData }) {
     history.push(`/feed`)
   };
   const handelProfile = () => {
-    history.push(`/profile`)
+    history.push(`/profile/${userData.userId}`)
   };
   const handelLogout = async () => {
-    await logout();
-    history.push('/login');
+    if(window.confirm("Do you really want to Exit? ☹")){
+      await logout();
+      history.push('/login');
+    }
+  
   };
   // -------------------------------------------
   const menuId = 'primary-search-account-menu';
@@ -108,11 +113,11 @@ export default function NavBar({ userData }) {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1}} >
       <AppBar sx={{background:"white"}}>
         <Toolbar>
           
-          <img style={{cursor:"pointer"}} onClick={handelLogoClick} src={logo4} alt="logo" width={103} height={29} />
+          <img style={{cursor:"pointer",marginLeft:"1rem"}} onClick={handelLogoClick} src={logo4} alt="logo" width={103} height={29} />
 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' }, color:"black",alignItems:"center",marginRight:"4rem" }}>

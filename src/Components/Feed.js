@@ -24,12 +24,6 @@ function Feed() {
   return (
     <div className="feed">
     < Navbar userData={userData}/>
-      <div className="comp" style={{ width: "50%" }}>
-        <h1 style={{fontFamily:"cursive"}}>Welcome to Post it</h1>
-        <Button variant="outlined" color="primary" onClick={logout}>
-          Logout
-        </Button>
-      </div>
       <UploadFile user={userData} />
       <Posts userData={userData}/>
     </div>
