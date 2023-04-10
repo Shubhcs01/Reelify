@@ -1,5 +1,5 @@
 import { Avatar, CircularProgress } from '@mui/material';
-import React,{useEffect,useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { database } from "../firebase";
 import Video from './video';
 import { deepOrange, deepPurple } from '@mui/material/colors';
@@ -8,24 +8,27 @@ import CommentIcon from '@mui/icons-material/Comment';
 import CommentModal from './CommentModal';
 import "../Components/Feed.css";
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import { WhatsappShareButton, WhatsappIcon } from 'react-share';
 
-function Posts({userData}) {
 
-    const[posts,setPosts] = useState(null);
-    const[open,setOpen] = useState(null);
-    const[modal,setModal] = useState(false);
+
+function Posts({ userData }) {
+
+    const [posts, setPosts] = useState(null);
+    const [open, setOpen] = useState(null);
+    const [modal, setModal] = useState(false);
 
     useEffect(() => {
-        let unsub = database.posts.orderBy('createdAt','desc').onSnapshot((snapshot)=>{
+        let unsub = database.posts.orderBy('createdAt', 'desc').onSnapshot((snapshot) => {
             let postArr = [] //containing obj of posts
             snapshot.forEach(doc => {
-                let data = {...doc.data(),docId:doc.id} //->obj
+                let data = { ...doc.data(), docId: doc.id } //->obj
                 postArr.push(data);
             })
             setPosts(postArr);
         })
         return unsub;
-    },[])
+    }, [])
 
     //Intersection observor api
     const observer = new IntersectionObserver((entries) => {
@@ -34,60 +37,69 @@ function Posts({userData}) {
             let elem = entry.target.childNodes[0];
             console.log(elem);
             //play()->async function, return promise
-            elem.play().then(()=>{
-                if(!elem.paused && !entry.isIntersecting){
+            elem.play().then(() => {
+                if (!elem.paused && !entry.isIntersecting) {
                     elem.pause();
                 }
             })
         });
-      }, { threshold: 0.6 });
+    }, { threshold: 0.6 });
 
-      
+
     useEffect(() => {
         const elements = document.querySelectorAll(".videos");
-        elements.forEach((elem)=>{
+        elements.forEach((elem) => {
             observer.observe(elem);
         })
         //cleanup (remove previous eventListener)
-        return()=>{
+        return () => {
             observer.disconnect();
         }
-    },[posts])
+    }, [posts])
 
     const handleModal = (id) => {
         setModal(!modal);
-        if(modal){
+        if (modal) {
             setOpen(id);
         } else {
             setOpen(null);
         }
     }
 
-  return (
-    <div>
-        {
-            posts == null? <CircularProgress/> : 
-            <div className='video-container'>
-                {
-                    posts.map((post,idx) => (
-                        <div className='videos' key={idx}>
-                            <Video src={post.postUrl}/>
-                            <div className='fa' style={{display:'flex'}}>
-                                <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
-                                <h4>{post.userName}</h4>
-                            </div>
-                            <Like userData={userData} postData={post}/>
-                            <CommentIcon onClick={()=>handleModal(post.postId)} className='icon-styling comment-icon'/>
-                            {
-                                modal? <CommentModal open={open} userData={userData} post={post}/>:<div></div>
-                            }
-                        </div>
-                    ))
-                }
-            </div>
-        }
-    </div>
-  )
+    return (
+        <div>
+            {
+                posts == null ? <CircularProgress /> :
+                    <div className='video-container'>
+                        {
+                            posts.map((post, idx) => (
+                                <div className='videos' key={idx}>
+                                    <Video src={post.postUrl} />
+                                    <div className='fa' style={{ display: 'flex' }}>
+                                        <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
+                                        <h4>{post.userName}</h4>
+                                    </div>
+                                    <Like userData={userData} postData={post} />
+                                    <CommentIcon onClick={() => handleModal(post.postId)} className='icon-styling comment-icon' />
+                                    {
+                                        modal ? <CommentModal open={open} userData={userData} post={post} /> : <div></div>
+                                    }
+                                    <WhatsappShareButton
+                                        className='whatsapp-icon'
+                                        url={post.postUrl}
+                                        quote={'Watch this awesome video of Reelify App!'}
+                                        hashtag="#reelify"
+                                    >
+                                        <WhatsappIcon size={28} round />
+                                    </WhatsappShareButton>
+
+                                </div>
+                            ))
+                        }
+                    </div>
+            }
+        </div>
+    )
 }
 
 export default Posts

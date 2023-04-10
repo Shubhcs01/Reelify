@@ -69,17 +69,24 @@ body{
 .like{
     cursor: pointer;
     color: red;
+    right: 30%;
 }
 
 .unlike{
     cursor: pointer;
     color: white;
+    right: 30%;
 }
 
 .comment-icon{
     cursor: pointer;
     color: white;
-    right: 5%;
+    right: 18%;
+}
+
+.whatsapp-icon{
+    right: 0%;
+    bottom: 4%;
 }
 
 .comment-modal{
