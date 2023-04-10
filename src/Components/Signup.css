@@ -4,18 +4,48 @@
 }
 
 .signupCard{
-    width: 27vw;
-    margin-top: 5%;
+    width: 50vh;
+    margin-top: 4%;
 }
 
 .insta-logo{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5%;
+    margin-top: 8%;
+    margin-bottom: 6%;
     width: 100%;
 }
 
 .insta-logo img{
     width: 15vw;
 }
+
+
+@media(min-width: 500px) and (max-width: 900px) {
+    .insta-logo img {
+      width: 26vw;
+    }
+  
+    .signupCard {
+      width: 35vh;
+      margin-top: 10%;
+    }
+  }
+  
+  @media(max-width: 472px) {
+    .insta-logo img {
+      width: 49vw;
+    }
+  
+    .signupCard {
+      width: 35vh;
+      margin-top: 20%;
+    }
+  }
+  
+  /* @media(min-width: 901px){
+    
+  } */
+  
+  

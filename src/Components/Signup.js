@@ -14,6 +14,7 @@ import AuthContext from '../AuthContext';
 import { useHistory } from "react-router-dom";
 import { database, storage } from '../firebase';
 import Input from '@mui/material/Input';
+import logo4 from '../Assets/logo4.png'
 
 
 export default function Signup() {
@@ -25,11 +26,14 @@ export default function Signup() {
             textAlign: 'center'
         },
         card2: {
-            height: '7vh',
+            height: '10vh',
             marginTop: '2%'
         },
         abc: {
-            height: '5vh'
+            height: '8vh'
+        },
+        btn: {
+            right: '0%'
         }
     })
     const classes = useStyles();
@@ -87,8 +91,8 @@ export default function Signup() {
 
             <div className='signupCard'>
                 <Card variant='outlined'>
-                    <div className='insta-logo'>
-                        <h1 style={{fontFamily:'cursive'}}>Sign up</h1>
+                <div className='insta-logo'>
+                        <img src={logo4} />
                     </div>
                     <CardContent>
 
@@ -110,12 +114,12 @@ export default function Signup() {
 
                     </CardContent>
                     <CardActions>
-                        <Button onClick={handleClick} size="small" variant="contained" fullWidth={true} color='primary'>Sign up</Button>
+                        <Button className={classes.btn} onClick={handleClick} size="small" variant="contained" fullWidth={true} color='primary'>Sign up</Button>
                     </CardActions>
                     <CardContent>
-                        <Typography variant="subtitle2" className={classes.text1}>
-                            By signing up, you agree to our Terms , Data Policy and Cookies Policy .
-                        </Typography>
+                        {/* <Typography variant="subtitle2" className={classes.text1}>
+                            { Welcome To Reelify }
+                        </Typography> */}
                     </CardContent>
                 </Card>
                 <Card variant='outlined' className={classes.card2}>
