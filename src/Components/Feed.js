@@ -23,7 +23,7 @@ function Feed() {
 
   return (
     <div className="feed">
-    < Navbar userData={userData}/>
+      <Navbar userData={userData}/>
       <UploadFile user={userData} />
       <Posts userData={userData}/>
     </div>

@@ -11,12 +11,7 @@ import { Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField'
 import { makeStyles } from '@mui/styles';
 import Alert from '@mui/material/Alert';
-import bg from '../Assets/bg.png'
-import img1 from '../Assets/img1.jpg'
-import img2 from '../Assets/img2.jpg'
-import img3 from '../Assets/img3.jpg'
-import img4 from '../Assets/img4.jpg'
-import img5 from '../Assets/img5.jpg'
+import logo4 from '../Assets/logo4.png'
 import { CarouselProvider, Slider, Slide, Image } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useContext, useState } from 'react';
@@ -37,11 +32,14 @@ function Login() {
             color: 'black'
         },
         card2: {
-            height: '6vh',
+            height: '10vh',
             marginTop: '2%'
         },
         abc: {
-            height: '5vh'
+            height: '8vh'
+        },
+        btn: {
+            right: '0%'
         }
     })
     const classes = useStyles();
@@ -99,7 +97,7 @@ function Login() {
                 <Card variant='outlined'>
 
                     <div className='insta-logo'>
-                        <h1 style={{fontFamily:'cursive'}}>Log In</h1>
+                        <img src={logo4} />
                     </div>
 
                     <CardContent>
@@ -113,7 +111,7 @@ function Login() {
                     </CardContent>
 
                     <CardActions>
-                        <Button onClick={handleClick} size="small" variant="contained" fullWidth={true} color='primary'>Log In</Button>
+                        <Button className={classes.btn} onClick={handleClick} size="small" variant="contained" fullWidth={true} color='primary'>Log In</Button>
                     </CardActions>
                     <CardContent>
                         <Typography variant="subtitle2" className={classes.text1}>
