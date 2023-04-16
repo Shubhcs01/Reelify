@@ -7,8 +7,11 @@ import { Button } from "@mui/material";
 import UploadFile from "./UploadFile";
 import { database } from "../firebase";
 import Posts from "./Posts";
+import useLocalStorage from "use-local-storage";
 
 function Feed() {
+
+  const[theme, setTheme] = useLocalStorage("theme","light");
   
   const { user, logout } = useContext(AuthContext);
   const [userData, setUserData] = useState('');
@@ -22,8 +25,8 @@ function Feed() {
   },[user])
 
   return (
-    <div className="feed">
-      <Navbar userData={userData}/>
+    <div className={`feed ${theme}`}>
+      <Navbar theme={theme} setTheme={setTheme} userData={userData}/>
       <UploadFile user={userData} />
       <Posts userData={userData}/>
     </div>

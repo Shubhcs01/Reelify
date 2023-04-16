@@ -5,16 +5,14 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import './Signup.css';
-import logo from '../Assets/Instagram.png';
 import { Link } from 'react-router-dom';
-import TextField from '@mui/material/TextField'
 import { makeStyles } from '@mui/styles';
 import Alert from '@mui/material/Alert';
 import AuthContext from '../AuthContext';
 import { useHistory } from "react-router-dom";
 import { database, storage } from '../firebase';
 import Input from '@mui/material/Input';
-import logo4 from '../Assets/logo4.png'
+import logoDark from '../Assets/logoDark.png'
 
 
 export default function Signup() {
@@ -92,7 +90,7 @@ export default function Signup() {
             <div className='signupCard'>
                 <Card variant='outlined'>
                 <div className='insta-logo'>
-                        <img src={logo4} />
+                        <img src={logoDark} />
                     </div>
                     <CardContent>
 

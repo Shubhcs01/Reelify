@@ -2,17 +2,13 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-// import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import './Login.css';
-import logo from '../Assets/Instagram.png';
 import { Link } from 'react-router-dom';
-import TextField from '@mui/material/TextField'
 import { makeStyles } from '@mui/styles';
 import Alert from '@mui/material/Alert';
-import logo4 from '../Assets/logo4.png'
-import { CarouselProvider, Slider, Slide, Image } from 'pure-react-carousel';
+import logoDark from '../Assets/logoDark.png'
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useContext, useState } from 'react';
 import { useHistory } from "react-router-dom";
@@ -25,7 +21,8 @@ function Login() {
     const useStyles = makeStyles({
         text1: {
             color: 'grey',
-            textAlign: 'center'
+            textAlign: 'center',
+            
         },
         text2: {
             textAlign: 'center',
@@ -97,10 +94,14 @@ function Login() {
                 <Card variant='outlined'>
 
                     <div className='insta-logo'>
-                        <img src={logo4} />
+                        <img src={logoDark} />
                     </div>
 
                     <CardContent>
+
+                    <Typography className={classes.text1} variant="subtitle1">
+                           Welcome Back!
+                        </Typography>
 
                         {error!=='' && <Alert severity="error">{error}</Alert>}
                         

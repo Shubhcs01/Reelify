@@ -17,14 +17,29 @@ import AuthContext from '../AuthContext'
 import Avatar from '@mui/material/Avatar';
 import HomeIcon from '@mui/icons-material/Home';
 import ExploreIcon from '@mui/icons-material/Explore';
-import logo4 from '../Assets/logo4.png';
+import logoDark from '../Assets/logoDark.png';
+import logoLight from '../Assets/logoLight.png';
 import { makeStyles } from '@mui/styles';
+import { FaToggleOn, FaToggleOff } from 'react-icons/fa';
+import { MdDarkMode } from 'react-icons/md';
 
 
-export default function NavBar({ userData }) {
+export default function NavBar({theme, setTheme, userData }) {
 
   console.log("navbar");
   console.log(userData);
+
+  function toggleTheme(){
+    const newTheme = theme === 'light'? 'dark':'light';
+    setTheme(newTheme);
+  }
+
+  const useStyles = makeStyles({
+    navfa:{
+      color: theme==='light'? "black":"white"
+    }
+})
+const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -114,29 +129,36 @@ export default function NavBar({ userData }) {
 
   return (
     <Box sx={{ flexGrow: 1}} >
-      <AppBar sx={{background:"white"}}>
+      <AppBar sx={{background: theme==='light'? "white":"#282828"}}>
         <Toolbar>
           
-          <img style={{cursor:"pointer",marginLeft:"1rem"}} onClick={handelLogoClick} src={logo4} alt="logo" width={103} height={29} />
+          <img style={{cursor:"pointer",marginLeft:"1rem"}} onClick={handelLogoClick} src={theme==='light'? logoDark : logoLight} alt="logo" width={103} height={29} />
 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' }, color:"black",alignItems:"center",marginRight:"4rem" }}>
 
-          <HomeIcon onClick={handelLogoClick} sx={{marginRight:'1.5rem',cursor:'pointer'}}/>
-          <ExploreIcon sx={{marginRight:'1.5rem',cursor:'pointer'}}/>
+          <HomeIcon className={classes.navfa} onClick={handelLogoClick} sx={{marginRight:'1.5rem',cursor:'pointer'}}/>
+          <ExploreIcon className={classes.navfa} sx={{marginRight:'1.5rem',cursor:'pointer'}}/>
 
-            <IconButton
+            {/* <IconButton
               size="large"
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
+              color="blue"
+            > */}
+
               {/* TODO -> Add profileUrl to DB */}
-             <Avatar sx={{height:"1.5rem",width:"1.5rem"}} />
-            </IconButton>
+
+             <Avatar className={classes.navfa} onClick={handleProfileMenuOpen} sx={{marginRight:'1.5rem',height:"1.5rem",width:"1.5rem",cursor:'pointer'}} />
+             │ &nbsp;&nbsp;
+            {/* </IconButton> */}
+            <MdDarkMode className={classes.navfa} size={26} style={{marginRight:'0.3rem'}}/>
+
+            {theme==='light'? <FaToggleOff onClick={toggleTheme} style={{cursor:'pointer'}} size={30}/> : <FaToggleOn className={classes.navfa} onClick={toggleTheme} style={{cursor:'pointer'}} size={30}/>}
+
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -145,7 +167,7 @@ export default function NavBar({ userData }) {
               aria-controls={mobileMenuId}
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
-              color="inherit"
+              color="blue"
             >
               <MoreIcon />
             </IconButton>

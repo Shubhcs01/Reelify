@@ -36,7 +36,7 @@ function Profile() {
             {userData == null || postData == null ? <CircularProgress /> :
                 //else
                 <>
-                <NavBar/>
+                <NavBar theme={'light'}/>
                 <div className='profile'>
                     <div className='profile-info'>
                         <img className='profile-pic' src={profilePic}></img>
